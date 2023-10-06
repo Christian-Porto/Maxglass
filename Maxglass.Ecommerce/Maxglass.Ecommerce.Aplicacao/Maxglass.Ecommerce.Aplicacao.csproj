@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Maxglass.Ecommerce.DataTransfer\Maxglass.Ecommerce.DataTransfer.csproj" />
+    <ProjectReference Include="..\Maxglass.Ecommerce.Dominio\Maxglass.Ecommerce.Dominio.csproj" />
+    <ProjectReference Include="..\Maxglass.Ecommerce.Infra\Maxglass.Ecommerce.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>a7504fa7-dad1-414d-9fb9-cdc3e5c7b863</UserSecretsId>
+  </PropertyGroup>
+
+</Project>
