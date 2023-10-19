@@ -1,0 +1,9 @@
+<app-header-principal></app-header-principal>
+<app-carrossel></app-carrossel>
+<app-beneficios></app-beneficios>
+
+
+<div *ngIf="produtos">
+    <app-carrossel-produto  [produtos]="produtos.registros"></app-carrossel-produto>
+</div>
+<app-footer></app-footer>

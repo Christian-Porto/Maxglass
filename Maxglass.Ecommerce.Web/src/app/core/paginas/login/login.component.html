@@ -1,0 +1,43 @@
+
+<app-header-ambiente-seguro></app-header-ambiente-seguro>
+<div style="background-color: #0D2150;" class="h-100 w-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 mt-4">
+          <div class="m-3 p-4 rounded-2" style="background-color: #fff;">
+            <h4 style="color: #0D2150;">Acesse sua conta</h4>
+            <hr>
+         <form [formGroup]="loginForm" (submit)="logarUsuario()" class="row gap-3">
+
+              <div class="mb-2 mt-2">
+                <label class="mb-1" for="email">E-mail</label>
+                <input formControlName="email" type="email" placeholder="Digite seu e-mail" class="form-control">
+                <div *ngIf="loginForm.get('email').errors?.['required'] && loginForm.get('email').dirty"class="alert alert-danger alert-dismissible d-flex align-items-center fade show">Este campo é obrigatório</div>
+                <div *ngIf="loginForm.get('email').errors?.['email'] && loginForm.get('email').dirty"class="alert alert-danger alert-dismissible d-flex align-items-center fade show">Digite um email valido</div>
+              </div>
+
+              <div class="mb-2">
+                <label class="mb-1" for="senha">Senha</label>
+              <input formControlName="senha" type="password" placeholder="Digite sua senha" class="form-control">
+              <div *ngIf="loginForm.get('senha').errors?.['required'] && loginForm.get('senha').dirty" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">Este campo é obrigatório</div>
+             </div>
+
+              <button class="w-100 btn btn-primary btn-lg mt-2" type="submit"
+              [attr.disabled]="loginForm.invalid || null" >Entrar</button>
+              <div *ngIf="mensagemErro" class="alert alert-danger alert-dismissible d-flex align-items-center fade show">{{mensagemErro}}</div>
+          </form>
+       </div>
+       </div>
+
+    <div class="col-6 mt-5">
+        <h4 style="color: #fff;">Não tem uma conta ainda?</h4>
+          <p style="color: #fff;">Crie gratuitamente sua conta e tenha acesso a diversos benefícios<span class="rotaCadastro" routerLink="/cadastro"> criar conta</span></p>
+
+  </div>
+  <div class="mt-5 text-center">
+    <p style="color: #fff; ">Maxglass© 2022 - Todos os direitos reservados</p>
+</div>
+</div>
+
+</div>
+</div>

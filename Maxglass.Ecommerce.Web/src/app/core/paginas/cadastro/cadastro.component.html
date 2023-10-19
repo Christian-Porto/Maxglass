@@ -1,0 +1,75 @@
+<app-header-ambiente-seguro></app-header-ambiente-seguro>
+<div style="background-color: #0D2150;">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 mt-3">
+           <div class="m-3 p-4 rounded-2" style="background-color: #fff;">
+              <h4 style="color: #0D2150;">Acesse sua conta</h4>
+              <hr>
+
+              <form [formGroup]="cadastroForm" (submit)="cadastroUsuario()" class="row gap-2">
+                <div class="form-check text-center">
+                    <input  type="radio" id="PF" value="2" formControlName="tipo" class="form-check-input" name="tipo" checked>
+                    <label for="PF" class="form-check-label radio-inline mr-5">Pessoa Física</label>
+                    <input type="radio" id="PJ" value="1" formControlName="tipo" class="form-check-input" name="tipo">
+                    <label for="PJ" class="form-check-label radio-inline ">Pessoa Jurídica</label>
+                </div>
+
+                <div class="mb-2">
+                  <label class="mb-1" for="email">E-mail</label>
+                  <input formControlName="email" type="email" placeholder="Digite ser e-mail" class="form-control ">
+                  <div *ngIf="cadastroForm.get('email').errors?.['required'] && cadastroForm.get('email').dirty"class="alert alert-danger alert-dismissible d-flex align-items-center fade show">Este campo é obrigatório</div>
+                  <div *ngIf="cadastroForm.get('email').errors?.['email'] && cadastroForm.get('email').dirty"class="alert alert-danger alert-dismissible d-flex align-items-center fade show">Digite um email valido</div>
+                </div>
+
+                <div class="mb-2">
+                <label for="senha" class="mb-1">Senha</label>
+                <div class="input-group mb-2">
+                  <input [type]="mostrarSenha?'text':'password'" class="form-control" placeholder="Digite sua senha" aria-label="Digite sua senha"  aria-describedby="button-addon2" formControlName="senha">
+                  <button class="btn btn-outline-secondary" type="button" id="button-addon" >
+                    <i (click)="tornarSenhaVisivel()" class="btn-hover"><fa-icon  [icon]="faEye" *ngIf="!mostrarSenha"></fa-icon></i>
+                    <i (click)="tornarSenhaVisivel()" class="btn-hover" ><fa-icon [icon]="faEyeSlash" *ngIf="mostrarSenha"></fa-icon></i></button>
+                </div>
+                <div *ngIf="cadastroForm.get('senha').errors?.['required'] && cadastroForm.get('senha').dirty" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">Este campo é obrigatório</div>
+              </div>
+
+
+              <div class="mb-2">
+                <label for="confirmaSenha" class="mb-1">Confirmar senha</label>
+                <div class="input-group mb-2">
+                  <input [type]="mostrarSenha?'text':'password'" class="form-control" placeholder="Confirme sua senha" aria-label="Confirme sua senha"  aria-describedby="button-addon2" formControlName="confirmaSenha">
+                  <button class="btn btn-outline-secondary" type="button" id="button-addon2" >
+                    <i (click)="tornarSenhaVisivel()" class="btn-hover"><fa-icon  [icon]="faEye" *ngIf="!mostrarSenha"></fa-icon></i>
+                    <i (click)="tornarSenhaVisivel()" class="btn-hover" ><fa-icon [icon]="faEyeSlash" *ngIf="mostrarSenha"></fa-icon></i></button>
+                </div>
+                <div *ngIf="cadastroForm.get('confirmaSenha').errors?.['required'] && cadastroForm.get('confirmaSenha').dirty" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">Este campo é obrigatório</div>
+                <div *ngIf="cadastroForm.get('confirmaSenha').value != cadastroForm.get('senha').value && cadastroForm.get('confirmaSenha').dirty" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">As senhas precisam ser iguais</div>
+              </div>
+
+              <div class="form-check m-2">
+                <input class="form-check-input" type="checkbox" value="" id="termos" (input)="atualizarEstadoCampo($event)" required>
+
+                <label class="form-check-label" for="flexCheckChecked">
+                  Concordo com os <a href="https://www.autoglassonline.com.br/institucional/termos-de-uso">termos e condições</a><b style="color:red">*</b>
+                </label>
+
+              </div>
+
+                <button class="w-100 btn btn-primary btn-lg mt-3" type="submit"
+                [attr.disabled]="cadastroForm.invalid  || cadastroForm.get('senha').value !== cadastroForm.get('confirmaSenha').value || campoPreenchido == false || null" >Cadastrar</button>
+              </form>
+           </div>
+        </div>
+        <div class="col-6 mt-5">
+            <div class="mb-3">
+            <h4 style="color: #fff;">Criar uma conta é rápido, fácil e gratuito</h4>
+              <p style="color: #fff;">Com a sua conta da Maxglass você tem acesso a Ofertas exclusivas, descontos, acompanhar os seus pedidos e muito mais!</p>
+          </div>
+        </div>
+      </div>
+      <div class="my-2 text-center">
+        <p style="color: #fff;">Maxglass© 2022 - Todos os direitos reservados</p>
+      </div>
+    </div>
+  </div>
+

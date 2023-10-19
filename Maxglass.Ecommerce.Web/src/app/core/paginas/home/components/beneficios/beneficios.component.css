@@ -1,0 +1,16 @@
+.col-3{
+  display: flex;
+}
+
+.topo{
+   margin: 4rem;
+}
+
+img{
+   width: 90px;
+   height: 90px;
+}
+
+p{
+   padding-top: 18px;
+}

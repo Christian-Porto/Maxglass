@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <div
+      class="col-lg-12 d-flex align-items-stretch justify-content-center"
+    >
+      <div
+        id="carrosselProduto"
+        class="carousel slide"
+        data-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row align-items-md-stretch d-flex">
+              <div class="col-4">
+                <app-card [produtoCard]="produtos[0]" (adicionarCarrinho)="adicionarAoCarrinho($event)"></app-card>
+              </div>
+              <div class="col-4">
+                <app-card [produtoCard]="produtos[1]" (adicionarCarrinho)="adicionarAoCarrinho($event)"></app-card>
+              </div>
+              <div class="col-4">
+                <app-card [produtoCard]="produtos[2]" (adicionarCarrinho)="adicionarAoCarrinho($event)"></app-card>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="row align-items-md-stretch d-flex">
+              <div class="col-4">
+                <app-card [produtoCard]="produtos[3]"  (adicionarCarrinho)="adicionarAoCarrinho($event)"></app-card>
+              </div>
+              <div class="col-4">
+                <app-card [produtoCard]="produtos[4]" (adicionarCarrinho)="adicionarAoCarrinho($event)"></app-card>
+              </div>
+              <div class="col-4">
+                <app-card [produtoCard]="produtos[5]" (adicionarCarrinho)="adicionarAoCarrinho($event)"></app-card>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="row align-items-md-stretch d-flex">
+              <div class="col-4">
+                <app-card [produtoCard]="produtos[6]" (adicionarCarrinho)="adicionarAoCarrinho($event)"></app-card>
+              </div>
+              <div class="col-4">
+                <app-card [produtoCard]="produtos[7]" (adicionarCarrinho)="adicionarAoCarrinho($event)"></app-card>
+              </div>
+              <div class="col-4">
+                <app-card [produtoCard]="produtos[8]" (adicionarCarrinho)="adicionarAoCarrinho($event)"></app-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a
+      class="carousel-control-prev ml-5 bg-transparent"
+      href="#carrosselProduto"
+      role="button"
+      data-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a
+      class="carousel-control-next mr-5 bg-transparent"
+      href="#carrosselProduto"
+      role="button"
+      data-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>

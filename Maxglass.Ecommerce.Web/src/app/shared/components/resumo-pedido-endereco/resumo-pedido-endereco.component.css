@@ -1,0 +1,20 @@
+.carousel-control-prev,
+.carousel-control-next {
+
+  width: 5vh;
+  height: 5vh;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-control-prev-icon {
+  width: 40px;
+  height: 40px;
+  background-image: url("/assets/angle-small-down-free-icon-font 4.svg");
+}
+
+.carousel-control-next-icon {
+  width: 40px;
+  height: 40px;
+  background-image: url("/assets/angle-small-down-free-icon-font 5.svg");
+}

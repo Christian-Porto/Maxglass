@@ -1,0 +1,75 @@
+<div class="my-3">
+  <h5>Todos os dados:</h5>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div *ngIf="cliente.tipo == 1">
+      <label for="email">E-mail:</label>
+      <input
+        class="form-control"
+        type="email"
+        id="email"
+        formControlName="email"
+        [value]="clienteResponsePj.email"
+      />
+      <span *ngIf="form.get('email').errors?.['email'] && form.get('email').dirty"
+      class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">E-mail inválido
+     </span>
+      <label for="City">Razão Social:</label>
+      <input class="form-control" type="text" formControlName="razaoSocial" [value]="clienteResponsePj.razaoSocial" />
+
+      <label for="City">CNPJ(somente números):</label>
+      <input class="form-control" type="text" formControlName="cnpj" [value]="clienteResponsePj.cnpj"/>
+      <span *ngIf="form.get('cnpj').hasError('pattern') && form.get('cnpj').dirty"
+       class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">CNPJ deve ter 14 digitos
+      </span>
+
+      <label for="City">IE:</label>
+      <input class="form-control" type="text" formControlName="ie" [value]="clienteResponsePj.inscricaoEstadual"/>
+
+      <label for="City">CEP(somente números):</label>
+      <input class="form-control" type="text" formControlName="cep" [value]="clienteResponsePj.cep"/>
+      <span *ngIf="form.get('cep').hasError('pattern') && form.get('cep').dirty"
+       class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">CEP deve ter 8 digitos
+      </span>
+    </div>
+
+    <div *ngIf="cliente.tipo == 2">
+      <label for="email">E-mail:</label>
+      <input
+        class="form-control"
+        type="email"
+        id="email"
+        formControlName="email"
+        [value]="clienteResponsePf.email"
+      />
+      <span *ngIf="form.get('email').errors?.['email'] && form.get('email').dirty"
+      class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">E-mail inválido
+     </span>
+
+      <label for="City">Nome:</label>
+      <input class="form-control" type="text" formControlName="nome" [value]="clienteResponsePf.nome"/>
+      <label for="City">Sobrenome:</label>
+      <input class="form-control" type="text" formControlName="sobreNome" [value]="clienteResponsePf.sobreNome"/>
+      <label for="City">CPF(somente números):</label>
+      <input class="form-control" type="text" formControlName="cpf"  [value]="clienteResponsePf.cpf"/>
+      <span *ngIf="form.get('cpf').hasError('pattern') && form.get('cpf').dirty"
+       class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">CPF deve ter 11 digitos
+      </span>
+
+      <label for="City">Telefone(somente números):</label>
+      <input class="form-control" type="text" placeholder="(+55)27 9999-99999" formControlName="telefone" [value]="clienteResponsePf.telefone"/>
+      <span *ngIf="form.get('telefone').hasError('pattern') && form.get('telefone').dirty"
+       class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">Telefone deve ter no minimo 8 e no maximo 9 digitos, sem contar o ddd
+      </span>
+
+      <label for="City">CEP(somente números):</label>
+      <input class="form-control" type="text" formControlName="cep" [value]="clienteResponsePf.cep"/>
+      <span *ngIf="form.get('cep').hasError('pattern') && form.get('cep').dirty"
+       class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">Cep deve ter 8 digitos
+      </span>
+    </div>
+
+
+    <button class="btn btn-primary my-3" [disabled]="form.invalid || null" type="submit">Salvar</button>
+  </form>
+</div>

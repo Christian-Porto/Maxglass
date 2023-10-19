@@ -1,0 +1,111 @@
+<header class="centraliza">
+  <div class="navbar navbar-dark bg-white" style="height: 79px">
+    <div class="navbar-brand align-item-center d-flex">
+      <i style="font-size: 40px" class="fas fa-shipping-fast">
+        <a [routerLink]="['/', 'home']" class="container">
+          <img
+            src="/assets/img/maxglass-logo.png"
+            [routerLink]="['/', 'home']"
+            height="60"
+            alt="Imagem Logo"
+            loading="lazy"
+          />
+        </a>
+      </i>
+      <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr">
+        <div class="d-flex align-items-center">
+          <div class="pai">
+            <form (submit)="buscarProduto()" class="w-100 me-5" role="search">
+              <input
+                type="text"
+                [(ngModel)]="nome"
+                name="nome"
+                class="form-control icon-search"
+                placeholder="Pesquisar"
+                aria-label="Search"
+                autofocus
+
+                />
+                <span (click)="buscarProduto()" class="fas fa-search search-icon"></span>
+            </form>
+
+          </div>
+
+          <div class="flex-shrink-0 dropdown ">
+            <div *ngIf="!usuarioLogado" class="menu-nao-logado">
+              <a
+              class="d-block link-dark text-decoration-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <button type="button" class="header btn btn-outline-primary me-2 active background-glass"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-fill" viewBox="4 1 9 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+              </svg>
+                Entrar ou cadastrar
+              </button>
+
+              <ul class="dropdown-menu text-small box-color-ul  pe-auto">
+                <button class="btn btn-success btn-lg btn-entrar btn-login">
+                  <li><a class="btn-entrar-cor dropdown-item" [routerLink]="['/', 'login']">Entrar</a></li>
+                </button>
+                  <a class="dropdown-item cadastro-link link" [routerLink]="['/', 'cadastro']"
+                    >Não tem conta? <b>Cadastre-se</b>
+                  </a>
+              </ul>
+              </a>
+          </div>
+            <div *ngIf="usuarioLogado" class="menu-logado">
+              <a
+              class="d-block link-dark text-decoration-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <button type="button" class="header btn btn-outline-primary me-2 active background-glass"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-fill" viewBox="4 1 9 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+              </svg>
+                Olá, seja bem vindo!
+              </button>
+            </a>
+            <ul class="dropdown-menu text-small box-color-ul w-100 px-3">
+
+                <li><a class="dropdown-item " [routerLink]="['/user/perfil']">Meu cadastro</a></li>
+                <li><a class="dropdown-item " [routerLink]="['/user/pedidos']">Meus pedidos</a></li>
+                <li><a class="dropdown-item" id="logout" (click)="logout()">Sair</a></li>
+
+            </ul>
+            </div>
+
+          </div>
+
+          <!-- Icones coração e carrinho -->
+          <button class="btn btn-white" style="border:none">
+            <i
+              style="font-size: 30px"
+              class="fa-sharp-red fa-solid fa-heart"
+              [routerLink]="['/user/favoritos']"
+            ></i>
+          </button>
+          <button class="btn btn-white me-2">
+            <i
+              style="font-size: 30px"
+              class="fa-solid fa-cart-shopping"
+              [routerLink]="['/', 'carrinho']"
+            ></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="header py-0 mb-5">
+  <header class="d-flex justify-content-center py-2">
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a [routerLink]="['/produtos/farol']" class="nav-link"><b>Faróis</b></a></li>
+      <li class="nav-item"><a [routerLink]="['/produtos/vidro']" class="nav-link"><b>Vidros</b></a></li>
+      <li class="nav-item"><a [routerLink]="['/produtos/retrovisor']" class="nav-link"><b>Retrovisores</b></a></li>
+      <li class="nav-item"><a [routerLink]="['/produtos/parachoque']" class="nav-link"><b>Parachoques</b></a></li>
+      <li class="nav-item"><a [routerLink]="['/produtos/palheta']" class="nav-link"><b>Palhetas</b></a></li>
+
+    </ul>
+  </header>
+</div>

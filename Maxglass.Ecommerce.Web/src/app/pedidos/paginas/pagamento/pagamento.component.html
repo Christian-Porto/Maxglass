@@ -1,0 +1,181 @@
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-6 p-3 rounded" style="background-color: #0D2150;">
+          <p><b>DADOS DE PAGAMENTO</b></p>
+          <!--abas-->
+          <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button (click)="alteraTipoPagamento(1)"
+                      class="nav-link active"
+                      id="nav-home-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#nav-home"
+                      type="button"
+                      role="tab"
+                      aria-controls="nav-home"
+                      aria-selected="true"
+                  >
+                      Cartão de crédito
+                  </button>
+                  <button (click)="alteraTipoPagamento(0)"
+                      class="nav-link"
+                      id="nav-profile-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#nav-profile"
+                      type="button"
+                      role="tab"
+                      aria-controls="nav-profile"
+                      aria-selected="false"
+                  >
+                      Pix
+                  </button>
+              </div>
+          </nav>
+          <!--conteudo abas-->
+          <div class="tab-content" id="nav-tabContent">
+              <div
+                  class="tab-pane fade show active"
+                  id="nav-home"
+                  role="tabpanel"
+                  aria-labelledby="nav-home-tab"
+                  tabindex="0"
+              >
+                  <div class="m-3">
+                      <p><b>Cartão de crédito</b></p>
+                      <form [formGroup]="pagamentoForm" class="form-group" (submit)="pagar()" >
+                          <div class="row g-2">
+                              <div class="col-md-6">
+                                  <label for="numeroCartao">Número do cartão</label>
+                                  <input
+                                      type="number"
+                                      class="form-control"
+                                      id="numeroCartao"
+                                      placeholder="XXXX XXXX XXXX XXXX"
+                                      formControlName="numeroCartao"
+                                  >
+                                  <div *ngIf="pagamentoForm.get('numeroCartao').touched && pagamentoForm.get('numeroCartao').errors?.['required']" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">Este campo é obrigatório</div>
+                                  <div *ngIf="pagamentoForm.get('numeroCartao').hasError('pattern')" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">
+                                    Cartão de crédito inválido
+                                  </div>
+                              </div>
+                              <div class="col-md-3">
+                                  <label for="dataValidadeCartao" class="form-label ">Data de validade</label>
+                                  <select class="custom-select" id="mesExpiracaoCartao"
+                                  formControlName="mesExpiracao"
+                                  >
+                                  <option selected class="form-select" aria-label="Default select example">Mês</option>
+                                      <option *ngFor="let mes of meses" [value]="mes">{{ mes }}</option>
+                                  </select>
+                                  <div *ngIf="pagamentoForm.get('mesExpiracao').touched && pagamentoForm.get('mesExpiracao').errors?.['required']" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">Este campo é obrigatório</div>
+                              </div>
+                              <div class="col-md-3">
+                                  <label for="anoExpiracaoCartao" style="visibility: hidden;">ano</label>
+                                  <select class="custom-select" id="anoExpiracaoCartao" formControlName="anoExpiracao">
+                                     <option value="" disabled>Ano</option>
+                                      <option *ngFor="let ano of anosExpiracao" [value]="ano">{{ ano }}</option>
+                                  </select>
+                                  <div *ngIf="pagamentoForm.get('anoExpiracao').touched && pagamentoForm.get('anoExpiracao').errors?.['required']" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">Este campo é obrigatório</div>
+                              </div>
+                              <div class="col-6">
+                                <label for="nomeImpressoCartao">Nome impresso</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="nomeImpressoCartao"
+                                    placeholder="Nome impresso no cartão"
+                                    formControlName="nomeImpresso">
+                                    <div *ngIf="pagamentoForm.get('nomeImpresso').touched && pagamentoForm.get('nomeImpresso').errors?.['required']" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">Este campo é obrigatório</div>
+                              </div>
+
+                              <div class="col-6">
+                                  <label for="codigoSeguranca">Código de segurança</label>
+                                  <input
+                                      type="number"
+                                      class="form-control"
+                                      id="codigoSeguranca"
+                                      placeholder="CVV"
+                                      formControlName="codigoSeguranca">
+                                      <div *ngIf="pagamentoForm.get('codigoSeguranca').touched && pagamentoForm.get('codigoSeguranca').errors?.['required']" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">Este campo é obrigatório</div>
+                                      <div *ngIf="pagamentoForm.get('codigoSeguranca').hasError('pattern')" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">
+                                        CVV inválido
+                                      </div>
+                              </div>
+                              <div class="col-6 pb-3">
+                                <label for="parcelas">Parcelas</label>
+                                  <select class="custom-select" id="numer"
+                                  formControlName="parcelas" >
+                                      <option selected disabled>Parcelas</option>
+                                      <option value="1"> 1x de {{ valor | currency: 'BRL'}}</option>
+                                      <option value="2"> 2x de {{ (valor / 2).toFixed(2)| currency: 'BRL'}}</option>
+                                      <option value="3"> 3x de {{ (valor / 3).toFixed(2) | currency: 'BRL'}}</option>
+                                      <option value="4"> 4x de {{ (valor / 4).toFixed(2) | currency: 'BRL'}}</option>
+                                      <option value="5"> 5x de {{ (valor / 5).toFixed(2) | currency: 'BRL'}}</option>
+                                  </select>
+                                  <div *ngIf="pagamentoForm.get('parcelas').touched && pagamentoForm.get('parcelas').errors?.['required']" class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">Este campo é obrigatório</div>
+                              </div>
+                            </div>
+                          </form>
+                      <div class="d-grid gap-2">
+                      <button class="btn btn-pagamento" type="submit" style="background-color: #119F11; color: #fff;" [attr.disabled]="pagamentoForm.invalid || null" (click)="pagar()" data-bs-toggle="modal" data-bs-target="#exampleModal"><b>Finalizar pagamento</b></button>
+                    </div>
+                  </div>
+              </div>
+              <div
+                  class="tab-pane fade"
+                  id="nav-profile"
+                  role="tabpanel"
+                  aria-labelledby="nav-profile-tab"
+                  tabindex="0"
+              >
+                  <div class="p-3">
+                    <p><b>Chave PIX</b></p>
+
+                  <div class="text-center">
+                    <p>O código Pix tem prazo de 2 horas para pagamento. Caso não seja realizado dentro desse período, o pedido será cancelado.</p>
+                  </div>
+                  <div class="row">
+                    <img src="assets/img/qrcode.svg" alt="qrcode" style="width: 250px;" class="mx-auto">
+                    <div class="input-group mb-2 p-3">
+                      <input type="text" class="form-control" id="campo-copiar"
+                       [(ngModel)]="conteudoCopiar">
+                      <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button" id="botao-copiar" (click)="copiar()" >Copiar</button>
+                      </div>
+                    </div>
+                    <div class="d-grid gap-1">
+                      <button class="btn btn-pagamento" type="submit" style="background-color: #119F11; color: #fff;" (click)="pagar()" data-bs-toggle="modal" data-bs-target="#exampleModal"><b>Finalizar pagamento</b></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-6 ">
+          <app-resumo-pedido-endereco></app-resumo-pedido-endereco>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+      </div>
+      <div class="modal-body p-2">
+          <div class="text-center">
+            <img src="assets/img/pagamento.svg" alt="pagamento concluido" style="width: 200px;">
+            <div class="p-3">
+              <p style="color: black; font-size: 18px;">Pagamento realizado com sucesso!</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

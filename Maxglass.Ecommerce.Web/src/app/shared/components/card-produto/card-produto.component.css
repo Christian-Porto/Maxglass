@@ -1,0 +1,29 @@
+.botaoCarrinho{
+    background-color: #119F11;
+    color: #FFFFFF;
+    font-weight: 550;
+
+}
+
+.preco{
+    color: #0D2150;
+    font-weight: 550;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.precoParcelado{
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    color: #303030;
+    font-weight: 700;
+    font-size: 15px;
+
+}
+
+.nome{
+    color: #303030;
+    font-weight: 600;
+}

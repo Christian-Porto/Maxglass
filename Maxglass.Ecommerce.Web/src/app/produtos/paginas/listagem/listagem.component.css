@@ -1,0 +1,22 @@
+.cursor-pointer{
+  cursor: pointer;
+}
+.pai{
+  position: relative;
+}
+.popUp{
+
+  position: fixed;
+  font-weight: normal;
+  border-radius: 8px;
+  right: 2%;
+  z-index: 1;
+  max-width: 200px;
+
+}
+.popUp button{
+  position: absolute;
+  height: 1px;
+  right: 2%;
+  top: 8%;
+}

@@ -1,0 +1,65 @@
+
+<div class="container">
+  <div class="row">
+    <p class="finalizar-pagamento mb-0">FINALIZAR PAGAMENTO</p>
+    <div class="col-6 p-3 rounded my-0" style="background-color: #0d2150">
+
+      <div class="d-flex">
+        <img src="/assets/img/do-utilizador 3.svg">
+        <p class="dados-pessoais ml-2 my-2">DADOS PESSOAIS</p>
+      </div>
+      <div class="pr-3 pl-3 py-2 pb-0" >
+        <p style="color: #fff">Solicitamos apenas as informações essenciais para
+          a realização da compra.</p>
+      </div>
+
+
+
+      <form [formGroup]="cadastroForm" class="form-group" >
+      <div *ngIf="tipoCliente == 1">
+
+
+          <label class="label-form mb-0" >CNPJ</label>
+          <input formControlName="cnpj" type="text" placeholder="XX. XXX. XXX/0001-XX" class="form-control my-1">
+
+          <label class="label-form mb-0" >Razao Social</label>
+          <input formControlName="razaoSocial" type="text " class="form-control my-1">
+
+          <label class="label-form mb-0" >Inscricao Estadual</label>
+          <input formControlName="inscricaoEstadual" placeholder="XXX.XXX.XXX.XXX" type="text" class="form-control my-1">
+
+
+          <label class="label-form mb-0" >Nome Fantasia</label>
+          <input formControlName="nomeFantasia" type="text" class="form-control my-1">
+
+
+      </div>
+
+      <div *ngIf="tipoCliente == 2">
+
+        <label class="label-form mb-0" >Nome</label>
+        <input formControlName="nome" type="text" class="form-control my-1">
+
+        <label class="label-form mb-0" >Sobrenome</label>
+        <input formControlName="sobreNome" type="text" class="form-control my-1">
+
+
+        <label class="label-form mb-0" >CPF</label>
+        <input formControlName="cpf" type="text" placeholder="XXX.XXX.XXX-XX" class="form-control my-1">
+
+        <label class="label-form mb-0" >Telefone</label>
+        <input formControlName="telefone" type="text" class="form-control my-1">
+
+      </div>
+      <div>
+
+        <button [routerLink]="['/entrega']" class="btn mb-0 my-3" style="background-color: #119F11; color: #fff" (click)="completarcadastro()">Cadastar</button>
+      </div>
+    </form>
+    </div>
+    <div class="col-6" >
+      <app-resumo-pedido></app-resumo-pedido>
+    </div>
+  </div>
+</div>
+

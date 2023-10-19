@@ -1,0 +1,84 @@
+<div class="container py-4 pai">
+  <div *ngIf="mostraMensagemSucesso" class="popUp p-4 alert alert-success" role="alert">
+    <button type="button" class="btn-close" aria-label="Close" (click)="desativaMensagem()"></button>
+    <h6>Produto adicionado ao <a [routerLink]="['/carrinho']" class="alert-link">carrinho.</a></h6>
+  </div>
+  <div class="row align-items-md-stretch">
+    <div class="">
+      <p class="fw-semibold">Produtos encontrados <span class="bg-primary text-white px-2 rounded">{{produtos.quantidade}}</span></p>
+    </div>
+    <div class="col-2 p-0 my-3">
+      <div class="card fw-semibold">
+        <div class="card-header ">FILTRAR PRODUTOS</div>
+        <div class="card-body ">
+          <!-- Form for setting query parameters -->
+          <form #form="ngForm">
+            <!-- Tipo field -->
+            <div class="form-group">
+              <app-filtros
+                [produtoListarRequest]="produtoListarRequest"
+                (onFilter)="filtrarProdutos()"
+              ></app-filtros>
+              <div [ngSwitch]="produtoListarRequest.tipo">
+                <app-filtros-vidro
+                  *ngSwitchCase="1"
+                  [produtoListarRequest]="produtoListarRequest"
+                  (onFilter)="filtrarProdutos()"
+                >
+                </app-filtros-vidro>
+                <app-filtros-farol
+                  *ngSwitchCase="2"
+                  [produtoListarRequest]="produtoListarRequest"
+                  (onFilter)="filtrarProdutos()"
+                ></app-filtros-farol>
+                <app-filtros-palheta
+                  *ngSwitchCase="3"
+                  [produtoListarRequest]="produtoListarRequest"
+                  (onFilter)="filtrarProdutos()"
+                ></app-filtros-palheta>
+                <app-filtros-retrovisor
+                  *ngSwitchCase="4"
+                  [produtoListarRequest]="produtoListarRequest"
+                  (onFilter)="filtrarProdutos()"
+                ></app-filtros-retrovisor>
+                <app-filtros-parachoque
+                  *ngSwitchCase="5"
+                  [produtoListarRequest]="produtoListarRequest"
+                  (onFilter)="filtrarProdutos()"
+                ></app-filtros-parachoque>
+              </div>
+              <!-- next section -->
+            </div>
+            <!-- Other fields -->
+            <!-- ... -->
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Main content -->
+    <div class="col-9 mx-3">
+      <!-- Product list -->
+      <div class="row">
+        <div
+          class="col-lg-4 d-flex align-items-stretch justify-content-center my-3"
+          *ngFor="let produto of produtos.registros"
+        >
+        <app-card
+        [produtoCard]="produto"
+        [estoquesProdutos]="estoqueProdutos"
+        (adicionarCarrinho)="adicionarAoCarrinho($event)"
+      >
+      </app-card>
+        </div>
+        <div class="d-flex justify-content-center my-3">
+          <app-paginacao
+            [paginaAtual]="paginacaoRequest.pagina"
+            [produtosPorPagina]="paginacaoRequest.quantidadeProdutosPorPagina"
+            [totalRegistros]="paginacaoRequest.totalRegistros"
+            (mudarPagina)="atualizaPagina($event)"
+          ></app-paginacao>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+
+p, label{
+  color: #fff;
+}
+
+.btn-pagamento{
+  height: 50px;
+}
+
+
+.alinhar {
+  display: flex;
+  align-items: center;
+}
+

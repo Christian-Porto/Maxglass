@@ -1,0 +1,105 @@
+<div  class="container py-4">
+  <div  class="row align-items-md-stretch">
+    <div class="col-md-6">
+      <div class="h-100 p-5 rounded-3">
+        <img [src]=" produto?.imagens[0].url" class="img-fluid" alt="" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="h-100 p-5  border rounded-3">
+        <h4>{{ produto?.nome }}</h4>
+        <div>
+          <ul class="list-group list-group-horizontal">
+            <li class="border-end border-dark px-2">Código: {{ produto?.id }}</li>
+            <li class="border-end border-dark px-2">Marca: {{ produto?.marca.nome }}</li>
+            <li class="px-2">{{ disponibilidadeString }}</li>
+          </ul>
+        </div>
+        <p>Receba na sua casa:</p>
+
+        <h4>{{ valorTotal || produto?.valor | currency : "BRL" }}</h4>
+        <p>ou em 5X de {{ valorParcela | currency : "BRL" }}</p>
+
+        <div class="d-flex align-items-center">
+          <div class="input-group d-flex h-25">
+            <input
+              class="px-1"
+              type="button"
+              value="-"
+              (click)="decrementaUnidade()"
+            />
+            <span class="px-2 mt-1">{{ quantidade | number }}</span>
+            <input
+              class="px-1"
+              type="button"
+              value="+"
+              (click)="incrementaUnidade()"
+            />
+          </div>
+          <div class="w-75">
+            <button
+              class="btn btn-primary w-100"
+              [disabled]="disponibilidade"
+              (click)="comprar()"
+            >
+              Comprar agora
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mt-4">
+      <div class="card h-100">
+        <div class="card-header bg-primary">
+          <h6 class="text-light text-center pt-1">Descrição</h6>
+        </div>
+        <div class="card-body">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+            nihil sapiente sequi cumque. Odit ad velit, voluptatibus nam
+            similique fuga quia ratione ducimus excepturi ex non culpa rem
+            accusantium tenetur iusto temporibus aspernatur. Porro ipsam
+            repudiandae cupiditate dignissimos delectus illo veniam natus dolore
+            nesciunt blanditiis molestias sequi, voluptatum quisquam totam.
+            Dignissimos delectus illo veniam natus dolore nesciunt blanditiis
+            molestias. Excepturi ex non culpa accusan.
+          </p>
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mt-4">
+      <div class="card h-100">
+        <div class="card-header bg-primary">
+          <h6 class="text-light text-center pt-1">Especificações</h6>
+        </div>
+        <div class="card-body mb-1">
+          <table class="table">
+            <thead>
+              <tr *ngFor="let item of anosCompativeis">
+                <th scope="row">Ano Compatibilidade</th>
+                <td>{{ item }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Marca</th>
+                <td>{{ produto?.marca.nome }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Peça</th>
+                <td>{{ produto?.categoria.descricao }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Garantia</th>
+                <td colspan="2">1 ano</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

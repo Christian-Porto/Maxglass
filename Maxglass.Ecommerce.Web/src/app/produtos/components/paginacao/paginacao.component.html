@@ -1,0 +1,14 @@
+
+<nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="paginaAtual === 1">
+        <button class="page-link" (click)="voltarPagina()">Anterior</button>
+      </li>
+      <li class="page-item" *ngFor="let pagina of paginaNumeros" [class.active]="pagina === paginaAtual">
+        <button class="page-link" (click)="mudarPagina.emit(pagina)">{{ pagina }}</button>
+      </li>
+      <li class="page-item" [class.disabled]="paginaAtual === totalPaginas">
+        <button class="page-link" (click)="avancarPagina()">Próximo</button>
+      </li>
+    </ul>
+  </nav>

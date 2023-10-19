@@ -1,0 +1,98 @@
+<div class="container ">
+    <div class="row ">
+    <div class="col-6 " [ngStyle]="{'background-color': '#0b2150', 'border-radius': '10px'}">
+        <div class="my-3">
+            <form class="col-12" [formGroup]="cadastroForm">
+                <div class="input-group-prepend align-middle">
+                    <h5 class="mb-3 mt-1" [ngStyle]="{'color': '#fff'}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-truck" viewBox="0 0 16 16" style="margin-right: 2px; margin-bottom: 2px;">
+                            <path
+                                d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1
+                            .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294
+                            7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v
+                            7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A
+                            .5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                        </svg>
+                        Dados da entrega
+                    </h5>
+                </div>
+                <div class="row g-3 ">
+                    <div class="form-group col-5 mb-0">
+                        <label for="cep" [ngStyle]="{'color': '#fff'}">CEP</label>
+                        <input type="text" class="form-control" id="cep" placeholder="" formControlName="cep"
+                            (change)="onCEPChange()" [ngStyle]="{'background-color': '#D9D9D9'}">
+                        <div *ngIf="cadastroForm.get('cep').touched && cadastroForm.get('cep').errors?.['required']"
+                            class="alert alert-danger d-flex align-items-center fade show">Campo
+                            obrigatório
+                        </div>
+                        <div *ngIf="cadastroForm.get('cep').hasError('pattern')"
+                            class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">
+                            Cep inválido
+                        </div>
+                    </div>
+                    <div class="col-5 mb-3 ms-3">
+                        <p style="visibility: hidden;">cep</p>
+                        <a class="" href="https://buscacepinter.correios.com.br/app/endereco/index.php"
+                            [ngStyle]="{'color': '#368DF7'}">Consulte seu CEP</a>
+                    </div>
+                </div>
+                <hr class="mt-3" [ngStyle]="{'color': '#fff'}">
+                <label [ngStyle]="{'color': '#fff'}">Forma de entrega</label>
+                <div class="form-group mb-3 container text-center">
+                    <div class="row rounded-1 p-3" [ngStyle]="{'background-color': '#fff'}" [ngStyle]="{'background-color': '#D9D9D9'}">
+                        <div class="col p-0">
+                            <input type="radio" formControlName="checkbox" [value]="valores" class="mr-1 big-radio">
+                            Mais econômica
+                        </div>
+                        <div class="col">
+                        </div>
+                        <div class="col text-right">
+                            {{ valores | currency : 'BRL' }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="endereco" [ngStyle]="{'color': '#fff'}">Endereço de entrega</label>
+                    <input type="text" class="form-control" id="endereco" placeholder="Ex: Rua das flores"
+                        formControlName="endereco" [ngStyle]="{'background-color': '#D9D9D9'}">
+                    <div *ngIf="cadastroForm.get('endereco').touched && cadastroForm.get('endereco').errors?.['required']"
+                        class="alert alert-danger d-flex align-items-center fade show">Campo
+                        obrigatório
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-5 ">
+                        <label for="numero" class="col" [ngStyle]="{'color': '#fff'}">Número</label>
+                        <input type="number" class="form-control" id="numero" placeholder="Ex: 343"
+                            formControlName="numero" [ngStyle]="{'background-color': '#D9D9D9'}">
+                        <div *ngIf="cadastroForm.get('numero').touched && cadastroForm.get('numero').errors?.['required']"
+                            class="alert alert-danger d-flex align-items-center fade show">Campo
+                            obrigatório
+                        </div>
+                        <div *ngIf="cadastroForm.get('numero').hasError('pattern')"
+                            class=" alert alert-danger alert-dismissible d-flex align-items-center fade show">
+                            Número inválido
+                        </div>
+                    </div>
+                    <div class="form-group col-7 ">
+                        <label for="complemento" class="col" [ngStyle]="{'color': '#fff'}">Complemento</label>
+                        <input type="text" class="form-control" id="complemento" placeholder="Ex: Apartamento"
+                            formControlName="complemento" [ngStyle]="{'background-color': '#D9D9D9'}">
+                        <div *ngIf="cadastroForm.get('complemento').touched && cadastroForm.get('complemento').errors?.['required']"
+                            class="alert alert-danger d-flex align-items-center fade show">Campo
+                            obrigatório
+                        </div>
+                    </div>
+                </div>
+                <button (click)="submit()" type="submit" class="w-100 btn btn-primary btn-lg my-2"
+                    [attr.disabled]="cadastroForm.invalid || null">Ir para pagamento
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="col-6" >
+    <app-resumo-pedido></app-resumo-pedido>
+    </div>
+  </div>
+</div>

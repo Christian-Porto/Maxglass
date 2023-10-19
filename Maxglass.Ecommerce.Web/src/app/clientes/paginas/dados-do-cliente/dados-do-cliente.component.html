@@ -1,0 +1,26 @@
+<app-header-principal></app-header-principal>
+<div class="row">
+
+<div class="col-12 px-5 mx-5 pb-2 pt-0 ">
+<h5>Dados do Cliente</h5>
+</div>
+  <hr>
+<div class="col-3 p-0 my-3 mx-4 px-5">
+  <div class=" fw-semibold">
+    <div class="">
+
+      <div style="cursor: pointer;" [routerLink]="['perfil']"><fa-icon class="mx-3 fa-xl" [icon]="faUser"></fa-icon> Dados pessoais</div>
+      <hr>
+      <div style="cursor: pointer;" [routerLink]="['favoritos']" ><fa-icon class="mx-3 fa-xl" [icon]="faHeart"></fa-icon> Meus favoritos</div>
+      <hr>
+      <div style="cursor: pointer;" [routerLink]="['pedidos']"><fa-icon class="mx-3 fa-xl" [icon]="faList"></fa-icon> Pedidos</div>
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="col-8">
+  <router-outlet></router-outlet>
+</div>
+</div>
+
+<app-footer></app-footer>

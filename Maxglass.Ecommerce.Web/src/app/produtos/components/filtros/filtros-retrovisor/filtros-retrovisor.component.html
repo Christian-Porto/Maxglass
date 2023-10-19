@@ -1,0 +1,131 @@
+<label>Categoria</label>
+<div class="form-check form-check">
+    <input class="form-check-input" type="radio" name="categoria"  [value]="null"
+        [(ngModel)]="produtoListarRequest.categoria" (ngModelChange)="produtoListarRequest.categoria = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="categoriaTodos">Todos</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="categoria"  value="7"
+        [(ngModel)]="produtoListarRequest.categoria" (ngModelChange)="produtoListarRequest.categoria = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="categoria">Retrovisor Externo</label>
+</div>
+
+
+<label>Marca</label>
+<div class="form-check form-check">
+    <input class="form-check-input" type="radio" name="marca"  [value]="null"
+        [(ngModel)]="produtoListarRequest.marca" (ngModelChange)="produtoListarRequest.marca = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="marcaTodos">Todos</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="marca"  value="10"
+        [(ngModel)]="produtoListarRequest.marca" (ngModelChange)="produtoListarRequest.marca = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="marca">Metagal</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="marca"  value="9"
+      [(ngModel)]="produtoListarRequest.marca" (ngModelChange)="produtoListarRequest.marca = $event"
+      (change)="onFilter.emit()">
+  <label class="form-check-label" for="marca">Ficosa</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="marca"  value="11"
+      [(ngModel)]="produtoListarRequest.marca" (ngModelChange)="produtoListarRequest.marca = $event"
+      (change)="onFilter.emit()">
+  <label class="form-check-label" for="marca">Genuino</label>
+</div>
+
+
+<!-- next section -->
+<label>Posicao</label>
+<div class="form-check form-check">
+    <input class="form-check-input" type="radio" name="posicao"  [value]="null"
+        [(ngModel)]="produtoListarRequest.posicao" (ngModelChange)="produtoListarRequest.posicao = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="posicaoTodos">Todos</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="posicao"  value="Externo"
+        [(ngModel)]="produtoListarRequest.posicao" (ngModelChange)="produtoListarRequest.posicao = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="posicao">Externo</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="posicao"  value="Interno"
+        [(ngModel)]="produtoListarRequest.posicao" (ngModelChange)="produtoListarRequest.posicao = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="posicao">Interno</label>
+</div>
+
+<!-- next section -->
+<label>Pisca Alerta</label>
+<div class="form-check form-check">
+    <input class="form-check-input" type="radio" name="piscaAlerta"  [value]="null"
+        [(ngModel)]="produtoListarRequest.piscaAlerta" (ngModelChange)="produtoListarRequest.piscaAlerta = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="piscaAlertaTodos">Todos</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="piscaAlerta"  value="1"
+        [(ngModel)]="produtoListarRequest.piscaAlerta" (ngModelChange)="produtoListarRequest.piscaAlerta = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="piscaAlerta">Possui</label>
+</div>
+<!-- next section -->
+<label>Sensor Ponto Cego</label>
+<div class="form-check form-check">
+    <input class="form-check-input" type="radio" name="sensorPontoCego"  [value]="null"
+        [(ngModel)]="produtoListarRequest.sensorPontoCego"
+        (ngModelChange)="produtoListarRequest.sensorPontoCego = $event" (change)="onFilter.emit()">
+    <label class="form-check-label" for="sensorPontoCegoTodos">Todos</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="sensorPontoCego"  value="1"
+        [(ngModel)]="produtoListarRequest.sensorPontoCego"
+        (ngModelChange)="produtoListarRequest.sensorPontoCego = $event" (change)="onFilter.emit()">
+    <label class="form-check-label" for="sensorPontoCego">Possui</label>
+</div>
+
+<label>Carcaca</label>
+<div class="form-check form-check">
+    <input class="form-check-input" type="radio" name="carcaca"  [value]="null"
+        [(ngModel)]="produtoListarRequest.carcaca" (ngModelChange)="produtoListarRequest.carcaca = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="carcacaTodos">Todos</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="carcaca"  value="Cromada"
+        [(ngModel)]="produtoListarRequest.carcaca" (ngModelChange)="produtoListarRequest.carcaca = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="carcaca">Cromada</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="carcaca"  value="Acrilico"
+        [(ngModel)]="produtoListarRequest.carcaca" (ngModelChange)="produtoListarRequest.carcaca = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="carcaca">Acrilico</label>
+</div>
+<!-- next section -->
+<label>Lente</label>
+<div class="form-check form-check">
+    <input class="form-check-input" type="radio" name="lente"  [value]="null"
+        [(ngModel)]="produtoListarRequest.lente" (ngModelChange)="produtoListarRequest.lente = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="lenteTodos">Todos</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="lente"  value="De Vidro"
+        [(ngModel)]="produtoListarRequest.lente" (ngModelChange)="produtoListarRequest.lente = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="lente">Vidro</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="lente"  value="Lente Convexa"
+        [(ngModel)]="produtoListarRequest.lente" (ngModelChange)="produtoListarRequest.lente = $event"
+        (change)="onFilter.emit()">
+    <label class="form-check-label" for="lente">Convexa</label>
+</div>

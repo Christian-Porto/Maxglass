@@ -1,0 +1,33 @@
+<div class="card h-100 w-100 ">
+
+<div class="card h-100 position-relative" style="width: 18rem">
+  <div class="d-flex justify-content-end    ">
+    <button class="botao-favorito my-2 mr-2" style=" background:none; border: none " (click)="favoritar()">
+      <img src="/assets/img/icone-favorito-{{ favoritado }}.png">
+    </button>
+  </div>
+  <img
+    class="card-img-top pe-auto p-3"
+    style="cursor: pointer"
+    [routerLink]="['/produtos/detalhes/', produtoCard.id]"
+    [src]="produtoCard.imagens[0].url || 'assets/palheta-gol.jpg'"
+    alt="produto"
+  />
+  <div class="card-body">
+    <h6 class="card-title">{{ produtoCard.nome }}</h6>
+  </div>
+  <div class="px-3">
+    <h5 class="card-text my-3 azulGlassFont">
+      {{ produtoCard.valor | currency : "BRL" }}
+    </h5>
+    <div class="d-flex justify-content-center py-3">
+      <button
+        type="button"
+        class="btn btn-primary py-3 px-5"
+        (click)="adicionarCarrinho.emit(produtoCard.id)"
+      >
+        <span>Adicionar ao carrinho</span>
+      </button>
+    </div>
+  </div>
+</div>
